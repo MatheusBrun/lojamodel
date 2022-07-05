@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lojamodel/pages/product_detail_page.dart';
 import 'package:lojamodel/pages/products_overview_page.dart';
+import 'package:lojamodel/utils/app_routes.dart';
 import 'pages/products_overview_page.dart';
 
 void main() {
@@ -22,6 +24,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: ProductsOverviewPage(),
+      routes: {
+        AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailPage(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
