@@ -5,6 +5,7 @@ import 'package:lojamodel/pages/products_overview_page.dart';
 import 'package:lojamodel/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 import 'pages/products_overview_page.dart';
+import 'dart:ui';
 
 void main() {
   runApp(MyApp());
