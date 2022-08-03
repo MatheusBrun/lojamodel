@@ -7,7 +7,7 @@ import 'package:lojamodel/models/product.dart';
 class Cart with ChangeNotifier {
   Map<String, CartItem> _items = {};
 
-  Map<String, CartItem> get Items {
+  Map<String, CartItem> get items {
     return {..._items};
   }
 
@@ -48,6 +48,25 @@ class Cart with ChangeNotifier {
 
   void removeItem(String productId) {
     _items.remove(productId);
+    notifyListeners();
+  }
+
+  void removeSingleItem(String productId) {
+    if (!_items.containsKey(productId)) {
+      return;
+    }
+    if (_items[productId]?.quantity == 1) {
+      _items.remove(productId);
+    } else {
+      _items.update(
+          productId,
+          (existingItem) => CartItem(
+              id: existingItem.id,
+              productId: existingItem.productId,
+              name: existingItem.name,
+              quantity: existingItem.quantity - 1,
+              price: existingItem.price));
+    }
     notifyListeners();
   }
 
